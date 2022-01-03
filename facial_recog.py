@@ -2,8 +2,10 @@ import cv2
 from model import FacialExpressionModel
 import numpy as np
 
+# load the model from the weights and layers
 model = FacialExpressionModel("model.json", "model_weights.h5")
 font = cv2.FONT_HERSHEY_SIMPLEX
+
 # Load the cascade
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
@@ -29,7 +31,7 @@ while True:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
     # Display
     cv2.imshow('img', img)
-    # Stop if escape key is pressed
+    # Stop if q key is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 # Release the VideoCapture object
